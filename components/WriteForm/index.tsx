@@ -1,27 +1,24 @@
 import React from 'react';
-import {Button, Input, TextField} from "@material-ui/core";
-import classes from "./WriteForm.module.scss";
+import {Button, Input} from "@material-ui/core";
+import styles from './WriteForm.module.scss';
 import dynamic from "next/dynamic";
-import {TextsmsOutlined as MessageIcon} from "@material-ui/icons";
 
 const Editor = dynamic(() => import('../Editor').then(m => m.Editor), { ssr: false })
 
-
-type PropsType = {
-    title?: string
+interface WriteFormProps {
+    title?: string;
 }
 
-export const WriteForm: React.FC<PropsType> = ({title}) => {
+export const WriteForm: React.FC<WriteFormProps> = ({ title }) => {
     return (
         <div>
-            <Input classes={{root: classes.titleField}} placeholder={'Заголовок'}/>
-            <div className={classes.editor_wrapper}>
+            <Input classes={{ root: styles.titleField }} placeholder="Заголовок" defaultValue={title} />
+            <div className={styles.editor}>
                 <Editor />
             </div>
-            <Button style={{ height: 42 }} variant="contained" color="primary">
-                <MessageIcon className="mr-10" />
+            <Button variant="contained" color="primary">
                 Опубликовать
             </Button>
         </div>
-    )
-}
+    );
+};

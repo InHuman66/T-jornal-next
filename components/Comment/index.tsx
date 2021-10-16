@@ -7,13 +7,13 @@ import styles from './Comment.module.scss';
 interface CommentPostProps {
   user: {
     fullname: string;
-    avatarUrl : string
+    avatarUrl: string;
   };
   text: string;
-  createAt: string
+  createdAt: string;
 }
 
-export const Comment: React.FC<CommentPostProps> = ({ user, text , createAt}) => {
+export const Comment: React.FC<CommentPostProps> = ({ user, text, createdAt }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -32,7 +32,7 @@ export const Comment: React.FC<CommentPostProps> = ({ user, text , createAt}) =>
           alt="Avatar"
         />
         <b>{user.fullname}</b>
-        <span>{createAt}</span>
+        <span>{createdAt}</span>
       </div>
       <Typography className={styles.text}>
           {text}
